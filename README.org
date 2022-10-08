@@ -1,0 +1,91 @@
+#+TITLE: Install matlab on Arch Linux
+#+AUTHOR: Christian Hageloch
+
+Matlab is a pain in the ass on Linux. It is a bloated mess and for some reason wants to use their own libraries instead of system libraries.
+Here is step by step guide on how to successfully install and run matlab on arch linux. This installation is written for matlab r2022b.
+Excuse the amount of typos this guide was written in rage at 2am in the morning.
+
+This guide also inlcludes a rant on the atrocity of installing Matlab on Linux.
+If you see this guide you are deep down the rabbit hole and propably don't mind.
+
+1. Download the zip Archive from to official website: [[https://matlab.mathworks.com/]]
+   You are going to need an account to install the zip Archive
+   Depending on how you configured your browser it will download to the Download folder or somewhere else.
+   You propably know where you download stuff to. 
+
+2. Change directory into the Download folder and create two new folders
+   #+begin_src bash
+     cd ~/Downloads/
+     mkdir matlab
+     mkdir TMP
+   #+end_src
+
+3. Move the zip archive to the matlab folder. You don't want all these files in your Download folder 
+   #+begin_src bash
+     mv matlab_R2022b_glnxa64.zip matlab/
+     cd matlab/
+   #+end_src
+
+4. Unzip the zip Archive
+   #+begin_src bash 
+     unzip matlab_R2022b_glnxa64.zip
+   #+end_src
+
+5. The installer has a library incompatibility between the MATLAB application and the Arch Linux packages. The fix this run
+   #+begin_src bash
+     rm ./bin/glnxa64/libfreetype.so*
+   #+end_src
+
+6. Start the installer. I don't know why this method works but without the -downloadFolder flag the installer would either crash or not even start and you would have to switch displays to root which is not a good idea. If you don't run the script with elevated priviliges you can't create the /usr/local/MATLAB directory and symlink the executable to /usr/local/bin. Please make sure the installer can do what it wants to do because when I tried to change the install directory it didn't work because I am not on the same level mentally as the idiot that designed this installer.
+   #+begin_src bash
+     sudo ./install -downloadFolder /home/<user>/Downloads/TMP/
+   #+end_src
+
+7. Go through the installer and pray to god it doesn't crash during the download. Leave to install path as is and =TICK THE OPTION TO CREATE SYMLINKS= to
+   /usr/local/bin. Otherwise you are going to have to type the whole path to the executable every time you want to launch the application or create the symlink yourself. For what ever reason this is not ticked on by default. They propably assume that you are a big boy and can handle it with some lube.
+
+8. Altough you already entered your credentials in the installer you are going to have to activate Matlab one more time to prove you have a license.
+   For what ever reason the developers of this piece of trash have decided that they were not able to do that during the installer just to make your life
+   a little bit harder. You have to have an account which includes a license in order to download the zip archive + you need an account to even start the installer which includes a license but you need to prove it a third time.
+   Assuming you have installed to the standard path and you have ticked the option the create symlinks to your path in order to spawn the application without typing
+   the whole path to the executable do the following.
+   #+begin_src bash
+     cd /usr/local/MATLAB/R2022b/bin/
+     sudo ./activate_matlab.sh
+   #+end_src
+   Enter your credentials. Hopefully you remember the login name from the install wizard. Otherwise you are in trouble.
+
+9. Congratulations. You have successfully installed this piece of shit. Just port your matlab scripts to octave and live a happy life ever after.
+
+10. But no. You are not finished yet. Thank the developers and write them an email to take the huge stick out of their asses.
+    The same library incompatibility from the install wizard is still there. You cannot open or even create live scripts in the shitty IDE that is so slow you could
+    walk your dog for two ours before you can continue your work every time you input a character.
+    #+begin_src bash
+      cd /usr/local/MATLAB/R2022b/bin/glnxa64/
+      sudo rm libfreetype.so*
+    #+end_src
+
+11. Now you can be happy and only get annoyed by the shitty IDE. To not have to deal with that piece of trash install a real editor. I am going to use Emacs as an example on how to setup Matlab for Emacs.
+
+12. Go to your config file for GNU Emacs.
+    Copy to following code block into your config:
+    #+begin_src elisp
+      (autoload 'matlab-mode "matlab" "Matlab Editing Mode" t)
+      (add-to-list
+       'auto-mode-alist
+       '("\\.m$" . matlab-mode))
+      (setq matlab-indent-function t)
+      (setq matlab-shell-command "matlab")
+    #+end_src
+
+13. To execute a script type =M-x= matlab-shell and let that stupid shell start for a couple of seconds. Nobody knows why it takes so long so please use a real programming language for time sensitive tasks.
+    After a couple of hours you can type into the console.
+    Type the name of the script that you want to execute and hope that it doesn's contain any plots because you are going to have to wait another couple seconds.
+
+14. Now you are officially done with installing and writing some matlab code. Now you can switch back to the superior GNU Octave.
+
+15. Oh no. If you are not annoyed yet there's one more thing. If you use a standalone window manager JAVA is your biggest enemy. JAVA applications don't behave well inside standalone window managers if the WMName is not set to "LG3D". Install the program =wmname=. It is propably in your distributions repositories. Otherwise compile it from source that should be pretty easy because it is a minimal application. Otherwise you propably can't even launch matlab due to this bug.
+
+16. But wait that's not it. You would assume that the command =matlab= would launch the IDE. NO IT DOES NOT. It just launches the splash screen. WHO THE HELL THOUGHT OF THIS SHIT. You have to use the command =matlab -desktop= because it is not obvious enough that I want to launch the desktop version when I am in an X11 environment.
+    
+
