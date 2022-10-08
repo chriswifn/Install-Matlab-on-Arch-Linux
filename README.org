@@ -5,11 +5,11 @@ Matlab is a pain in the ass on Linux. It is a bloated mess and for some reason w
 Here is step by step guide on how to successfully install and run matlab on arch linux. This installation is written for matlab r2022b.
 Excuse the amount of typos this guide was written in rage at 2am in the morning.
 
-This guide also inlcludes a rant on the atrocity of installing Matlab on Linux.
+This guide also includes a rant on the atrocity of installing Matlab on Linux.
 If you see this guide you are deep down the rabbit hole and propably don't mind.
 
 1. Download the zip Archive from to official website: [[https://matlab.mathworks.com/]]
-   You are going to need an account to install the zip Archive
+   You are going to need an account to download the zip archive.
    Depending on how you configured your browser it will download to the Download folder or somewhere else.
    You propably know where you download stuff to. 
 
@@ -31,7 +31,7 @@ If you see this guide you are deep down the rabbit hole and propably don't mind.
      unzip matlab_R2022b_glnxa64.zip
    #+end_src
 
-5. The installer has a library incompatibility between the MATLAB application and the Arch Linux packages. The fix this run
+5. The installer has a library incompatibility between the MATLAB application and the Arch Linux packages. To fix this run
    #+begin_src bash
      rm ./bin/glnxa64/libfreetype.so*
    #+end_src
