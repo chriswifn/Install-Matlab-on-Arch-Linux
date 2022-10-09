@@ -71,7 +71,7 @@ For some reason I could only get this to run successfully with the =-downloadFol
 You need to run the install script with elevated privileges so that the installer can create the directory =/usr/local/MATLAB/= und create symlinks to =/usr/local/bin=. I would recommend not changing anything because the installer has a mind of its own and anything I change let to failure.
 
 ** Run through the installer
-*IMPORTANT!*: Tick the option to create symlinks to you =$PATH=. For some reason this is not ticked on by default. If you wish to launch the matlab application without typing the full path or creating symlinks manually this is recommended.
+*IMPORTANT!*: Tick the option to create symlinks to your =$PATH=. For some reason this is not ticked on by default. If you wish to launch the matlab application without typing the full path or creating symlinks manually this is recommended.
 During the installer your only option is to pray to god that it doesn't freeze or crash another way because there is nothing you can do.
 
 This should successfully download all the files and install Matlab if you are lucky.
@@ -84,7 +84,7 @@ This should successfully download all the files and install Matlab if you are lu
 #+end_src
 Although you already entered your credentials twice by downloading the zip archive and during the installer you still need to prove that you have a license one more time.
 For what ever reason the developers of this piece of trash have decided that they were not able to do that during the installer just to make your life a little bit harder.
-Assuming you have installed to the standard path and you have ticked the option to create symlinks to you =$PATH= the activate_matlab.sh script should launch just fine if you run it with elevated privileges.
+Assuming you have installed to the standard path and you have ticked the option to create symlinks to your =$PATH= the activate_matlab.sh script should launch just fine if you run it with elevated privileges.
 Enter your credentials. Hopefully you remember the login name from the install wizard. Otherwise you are in trouble.
 
 
