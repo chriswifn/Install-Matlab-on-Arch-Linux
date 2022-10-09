@@ -1,6 +1,8 @@
 #+TITLE: Install matlab on Arch Linux
 #+AUTHOR: Christian Hageloch
 
+[[./img/matlab.jpg]]
+
 * Table of Contents :toc:
 - [[#disclaimer][Disclaimer]]
 - [[#installation][Installation]]
