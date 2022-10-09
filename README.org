@@ -26,6 +26,8 @@
 - This is the installation process that worked for me. For a more detailed installation and and troubleshooting see the [[https://wiki.archlinux.org/title/MATLAB][Arch Linux Wiki]]. 
 - The individual steps are at the beginning of every paragraph.
 - Matlab has to be one of the biggest pieces of shit in terms of applications. Please port your scripts to GNU Octave if you are not forced to use Matlab.
+- I assume that you know your way around your file system and now how to launch an application without clicking an icon.
+- This guide was written in rage that the atrocity of installing Matlab caused me so excuse the typos.
 
 * Installation
 This installation is written for Matlab R2022b.
