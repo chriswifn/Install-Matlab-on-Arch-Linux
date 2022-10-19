@@ -74,6 +74,7 @@ You need to run the install script with elevated privileges so that the installe
 
 ** Run through the installer
 *IMPORTANT!*: Tick the option to create symlinks to your =$PATH=. For some reason this is not ticked on by default. If you wish to launch the matlab application without typing the full path or creating symlinks manually this is recommended.
+*ALSO IMPORTANT!*: Your login/user name should be the same as your =whoami= information.
 During the installer your only option is to pray to god that it doesn't freeze or crash another way because there is nothing you can do.
 
 This should successfully download all the files and install Matlab if you are lucky.
@@ -87,7 +88,7 @@ This should successfully download all the files and install Matlab if you are lu
 Although you already entered your credentials twice by downloading the zip archive and during the installer you still need to prove that you have a license one more time.
 For what ever reason the developers of this piece of trash have decided that they were not able to do that during the installer just to make your life a little bit harder.
 Assuming you have installed to the standard path and you have ticked the option to create symlinks to your =$PATH= the activate_matlab.sh script should launch just fine if you run it with elevated privileges.
-Enter your credentials. Hopefully you remember the login name from the install wizard. Otherwise you are in trouble.
+Enter your credentials. Hopefully you remember the user name from the install wizard. Otherwise you are in trouble.
 
 
 * Unable to open or create live scripts
