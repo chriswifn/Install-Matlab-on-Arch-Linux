@@ -55,7 +55,7 @@ The reason I do this is so I don't unzip matlab into my Downloads folder which w
 
 ** Unzip the archive
 #+begin_src bash
-  unzip matlab_R2022b_glnxa64.zip
+  unzip -X matlab_R2022b_glnxa64.zip
 #+end_src
 Nothing out of the ordinary here.
 
